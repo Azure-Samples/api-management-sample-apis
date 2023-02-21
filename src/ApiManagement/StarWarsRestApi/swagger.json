@@ -1,0 +1,888 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "StarWars.RestApi",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/Film": {
+            "get": {
+                "tags": [
+                    "Film"
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Film"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Film/{id}": {
+            "get": {
+                "tags": [
+                    "Film"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Film"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Person": {
+            "get": {
+                "tags": [
+                    "Person"
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Person"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Person/{id}": {
+            "get": {
+                "tags": [
+                    "Person"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Person"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Planet": {
+            "get": {
+                "tags": [
+                    "Planet"
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Planet"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Planet/{id}": {
+            "get": {
+                "tags": [
+                    "Planet"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Planet"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Species": {
+            "get": {
+                "tags": [
+                    "Species"
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Species"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Species/{id}": {
+            "get": {
+                "tags": [
+                    "Species"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Species"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Starship": {
+            "get": {
+                "tags": [
+                    "Starship"
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Starship"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Starship/{id}": {
+            "get": {
+                "tags": [
+                    "Starship"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Starship"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Vehicle": {
+            "get": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Vehicle"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Vehicle/{id}": {
+            "get": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Vehicle"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "DateOnly": {
+                "type": "object",
+                "properties": {
+                    "year": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "month": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "day": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "dayOfWeek": {
+                        "$ref": "#/components/schemas/DayOfWeek"
+                    },
+                    "dayOfYear": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true
+                    },
+                    "dayNumber": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "DayOfWeek": {
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                ],
+                "type": "integer",
+                "format": "int32"
+            },
+            "Film": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true
+                    },
+                    "title": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "opening_crawl": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "director": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "producer": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "release_date": {
+                        "$ref": "#/components/schemas/DateOnly"
+                    },
+                    "characters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Person"
+                        },
+                        "nullable": true
+                    },
+                    "planets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Planet"
+                        },
+                        "nullable": true
+                    },
+                    "species": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Species"
+                        },
+                        "nullable": true
+                    },
+                    "starships": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Starship"
+                        },
+                        "nullable": true
+                    },
+                    "vehicles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Vehicle"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Gender": {
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4
+                ],
+                "type": "integer",
+                "format": "int32"
+            },
+            "Person": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "height": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "mass": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "hair_color": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "skin_color": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "eye_color": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "birth_year": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "gender": {
+                        "$ref": "#/components/schemas/Gender"
+                    },
+                    "homeworld": {
+                        "$ref": "#/components/schemas/Planet"
+                    },
+                    "species": {
+                        "$ref": "#/components/schemas/Species"
+                    },
+                    "films": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Film"
+                        },
+                        "nullable": true
+                    },
+                    "starships": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Starship"
+                        },
+                        "nullable": true
+                    },
+                    "vehicles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Vehicle"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Planet": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "diameter": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "rotation_period": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "orbital_period": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "gravity": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "population": {
+                        "type": "integer",
+                        "format": "int64",
+                        "nullable": true
+                    },
+                    "climate": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "terrain": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "surface_water": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "films": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Film"
+                        },
+                        "nullable": true
+                    },
+                    "residents": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Person"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ProblemDetails": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "title": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "status": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "detail": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "instance": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": {}
+            },
+            "Species": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "classification": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "designation": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "average_height": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "average_lifespan": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "hair_colors": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "skin_colors": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "eye_colors": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "language": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "homeworld": {
+                        "$ref": "#/components/schemas/Planet"
+                    },
+                    "films": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Film"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Starship": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "model": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "manufacturer": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "cost_in_credits": {
+                        "type": "integer",
+                        "format": "int64",
+                        "nullable": true
+                    },
+                    "length": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "max_atmosphering_speed": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "crew": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "passengers": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "cargo_capacity": {
+                        "type": "integer",
+                        "format": "int64",
+                        "nullable": true
+                    },
+                    "consumables": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "pilots": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Person"
+                        },
+                        "nullable": true
+                    },
+                    "films": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Film"
+                        },
+                        "nullable": true
+                    },
+                    "starship_class": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "hyperdrive_rating": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "MGLT": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Vehicle": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "model": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "manufacturer": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "cost_in_credits": {
+                        "type": "integer",
+                        "format": "int64",
+                        "nullable": true
+                    },
+                    "length": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "max_atmosphering_speed": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "crew": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "passengers": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "cargo_capacity": {
+                        "type": "integer",
+                        "format": "int64",
+                        "nullable": true
+                    },
+                    "consumables": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "pilots": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Person"
+                        },
+                        "nullable": true
+                    },
+                    "films": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Film"
+                        },
+                        "nullable": true
+                    },
+                    "vehicle_class": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            }
+        }
+    }
+}

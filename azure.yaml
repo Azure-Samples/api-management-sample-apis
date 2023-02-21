@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+
+name: api-samples
+metadata:
+  template: api-management-api-samples@1.0.0
+services:
+  starwars-rest:
+    project: ./src/StarWars.RestApi
+    language: csharp
+    host: appservice
+  todo-rest:
+    project: ./src/Todo.RestApi
+    language: csharp
+    host: appservice
+  todo-react-rest:
+    project: ./src/todo.rest.web
+    dist: build
+    language: js
+    host: staticwebapp

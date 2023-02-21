@@ -1,0 +1,19 @@
+<policies>
+    <inbound>
+        <base />
+        <cache-lookup caching-type="prefer-external" downstream-caching-type="public" vary-by-developer="false" vary-by-developer-groups="false">
+            <vary-by-header>Accept</vary-by-header>
+        </cache-lookup>
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound>
+        <base />
+        <!-- Store all responses as cached elements for 10 minutes -->
+        <cache-store duration="600" />
+    </outbound>
+    <on-error>
+        <base />
+    </on-error>
+</policies>

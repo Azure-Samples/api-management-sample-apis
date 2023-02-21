@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+        "ms-azuretools.azure-dev",
+        "ms-vscode.azure-account",
+        "ms-azuretools.vscode-azureresourcegroups",
+        "ms-azuretools.vscode-azureappservice",
+        "ms-azuretools.vscode-apimanagement",
+        "ms-azuretools.vscode-cosmosdb",
+        "ms-azuretools.vscode-bicep",
+        "VisualStudioOnlineApplicationInsights.application-insights",
+        "ms-dotnettools.csharp",
+        "mikestead.dotenv"
+    ]
+}
