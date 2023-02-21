@@ -3,6 +3,7 @@ import { ActionTypes, TodoActions } from "../actions/common";
 import { TodoList } from "../models"
 
 export const listsReducer: Reducer<TodoList[], TodoActions> = (state: TodoList[], action: TodoActions): TodoList[] => {
+    console.log('action.payload == ', action.payload);
     switch (action.type) {
         case ActionTypes.LOAD_TODO_LISTS:
             state = [...action.payload];
