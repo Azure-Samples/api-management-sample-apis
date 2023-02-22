@@ -171,6 +171,19 @@ module starWarsRestApiService './app/starwars-rest-api.bicep' = {
 }
 
 // ---------------------------------------------------------------------------------------------
+//  API: Star Wars Synthetic GraphQL
+// ---------------------------------------------------------------------------------------------
+module starWarsSynQLApiService './app/starwars-syngql-api.bicep' = {
+  name: 'starwars-syngql-api-service'
+  scope: rg
+  params: {
+    apiManagementServiceName: apiManagement.outputs.serviceName
+    apiManagementLoggerName: apiManagement.outputs.loggerName
+    serviceUri: starWarsRestApiService.outputs.serviceUri
+  }
+}
+
+// ---------------------------------------------------------------------------------------------
 //  API: Todo REST
 // ---------------------------------------------------------------------------------------------
 module todoRestApiService './app/todo-rest-api.bicep' = {

@@ -1,0 +1,6 @@
+<http-data-source>
+	<http-request>
+		<set-method>GET</set-method>
+		<set-url>@($"{{starwarsapi}}/planet/{context.GraphQL.Parent["id"]}")</set-url>
+	</http-request>
+</http-data-source>

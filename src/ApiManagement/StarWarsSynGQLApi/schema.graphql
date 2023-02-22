@@ -1,0 +1,236 @@
+scalar DateOnly
+scalar Uri
+
+"""
+The possible genders for a character in the Star Wars universe
+"""
+enum Gender {
+  Unknown,
+  None,
+  Hermaphrodite,
+  Male,
+  Female
+}
+
+"""
+Information about a film in the Star Wars Cinematic Universe
+"""
+type Film {
+  "The unique ID of the film"
+  id: ID!
+  "The title of the film"
+  title: String!
+  "The opening crawl"
+  opening_crawl: String!
+  "The director of the film"
+  director: String!
+  "A comma-separated list of producers for the film"
+  producer: String!
+  "The release date for the first cinematic release"
+  release_date: DateOnly
+  "A list of characters in the film"
+  characters: [Person]!
+  "A list of planets in the film"
+  planets: [Planet]!
+  "A list of species in the film"
+  species: [Species]!
+  "A list of starships in the film"
+  starships: [Starship]!
+  "A list of (non-starship) vehicles in the film"
+  vehicles: [Vehicle]!
+  "The URI to get the information"
+  uri: Uri
+}
+
+"""
+Information about a character in the Star Wars Cinematic Universe
+"""
+type Person {
+  "The unique ID of the character"
+  id: ID!
+  "The name of the character"
+  name: String!
+  "The height (in meters) of the character"
+  height: Int
+  "The weight (in kg) of the character"
+  mass: Int
+  "A comma-separated list of hair colors"
+  hair_color: String!
+  "A comma-separated list of skin colors"
+  skin_color: String!
+  "A comma-separated list of eye colors"
+  eye_color: String!
+  "The birth year, relative to the Battle of Yavin"
+  birth_year: Int
+  "The gender of this character (droids are Gender.None)"
+  gender: Gender!
+  "The homeworld of this character"
+  homeworld: Planet
+  "The species of this character"
+  species: Species
+  "The list of films this character appeared in."
+  films: [Film]!
+  "The list of starships this character is known to pilot."
+  starships: [Starship]!
+  "The list of vehicles this character is known to pilot."
+  vehicles: [Vehicle]!
+  "The URI to get the information"
+  uri: Uri
+}
+
+"""
+A planet within the Star Wars Cinematic Universe
+"""
+type Planet {
+  "The unique ID of the planet"
+  id: ID!
+  "The planet name"
+  name: String!
+  "The diameter of the planet in km"
+  diameter: Int
+  "The number of standard hours it takes for this planet to complete a single rotation on its axix"
+  rotation_period: Int
+  "The number of standard days it takes for this planet to complete a single orbit of its local star."
+  orbital_period: Int
+  "A number denoting the relative gravity on this planet, with 1.0 being normal"
+  gravity: Float
+  "The average population of sentient beings inhabiting this planet."
+  population: Int
+  "A comma-separated list of climates for this planet"
+  climate: String!
+  "A comma-separated list of terrains for this planet"
+  terrain: String!
+  "The percentage of the planet surface this is naturally occuring water or bodies of water"
+  surface_water: Float
+  "The list of films depicting this planet"
+  films: [Film]!
+  "The list of known residents of this planet"
+  residents: [Person]!
+  "The URI to get the information"
+  uri: Uri
+}
+
+"""
+A sentient species within the Star Wars Cinematic Universe
+"""
+type Species {
+  "The unique ID of the species"
+  id: ID!
+  "The name of the species"
+  name: String!
+  "The classification of the species"
+  classification: String!
+  "The designation of the species"
+  designation: String!
+  "The average height in meters"
+  average_height: String!
+  "The average lifespan in standard years"
+  average_lifespan: String!
+  "A comma-separated list of possible hair colors"
+  hair_colors: String!
+  "A comma-separated list of possible skin colors"
+  skin_colors: String!
+  "A comma-separated list of possible eye colors"
+  eye_colors: String!
+  "The language predominently spoken by this species"
+  language: String!
+  "The home world for this species"
+  homeworld: Planet
+  "A list of films that depict this species"
+  films: [Film]!
+  "The URI to get the information"
+  uri: Uri
+}
+
+"""
+The starships of the Star Wars Cinematic Universe
+"""
+type Starship {
+  "The unique ID of the vehicle"
+  id: ID!
+  "The name of the vehicle"
+  name: String!
+  "The model of the vehicle"
+  model: String!
+  "The manufacturer of the vehicle"
+  manufacturer: String!
+  "The cost of the vehicle in galactic credits"
+  cost_in_credits: Int
+  "The length of the vehicle in meters"
+  length: Float
+  "The maximum speed of the vehicle within the atmosphere"
+  max_atmosphering_speed: Int
+  "The number of crew members required to operate the vehicle"
+  crew: Int
+  "The number of non-crew members the vehicle can hold"
+  passengers: Int
+  "The cargo capacity in kg"
+  cargo_capacity: Int
+  "The amount of time the vehicle can be operated without refueling"
+  consumables: String!
+  "The list of characters known to have been a pilot of this vehicle."
+  pilots: [Person]!
+  "The list of films that this vehicle was portrayed in."
+  films: [Film]!
+  "The URI to get the information"
+  uri: Uri
+  "The class of the starship"
+  starship_class: String!
+  "The hyperdrive rating"
+  hyperdrive_rating: Float
+  """
+  The Maximum number of Megalights this starship can travel in a standard hour. A Megalight is a standard unit of distance and
+  has never been defined before within the Star Wars universe.  This figure is only really useful for measuring the difference
+  in speed of starships. We can assume it is similar to AU, the distance between our Sun (Sol) and Earth.
+  """
+  mglt: Int
+}
+
+type Vehicle {
+  "The unique ID of the vehicle"
+  id: ID!
+  "The name of the vehicle"
+  name: String!
+  "The model of the vehicle"
+  model: String!
+  "The manufacturer of the vehicle"
+  manufacturer: String!
+  "The cost of the vehicle in galactic credits"
+  cost_in_credits: Int
+  "The length of the vehicle in meters"
+  length: Float
+  "The maximum speed of the vehicle within the atmosphere"
+  max_atmosphering_speed: Int
+  "The number of crew members required to operate the vehicle"
+  crew: Int
+  "The number of non-crew members the vehicle can hold"
+  passengers: Int
+  "The cargo capacity in kg"
+  cargo_capacity: Int
+  "The amount of time the vehicle can be operated without refueling"
+  consumables: String!
+  "The list of characters known to have been a pilot of this vehicle."
+  pilots: [Person]!
+  "The list of films that this vehicle was portrayed in."
+  films: [Film]!
+  "The URI to get the information"
+  uri: Uri
+  "The class of the vehicle"
+  vehicle_class: String!
+}
+
+type Query {
+  characters: [Person]!
+  films: [Film]!
+  planets: [Planet]!
+  species: [Species]!
+  starships: [Starship]!
+  vehicles: [Vehicle]!
+
+  getCharacterById(id: Int): Person
+  getFilmById(id: Int): Film
+  getPlanetById(id: Int): Planet
+  getSpeciesById(id: Int): Species
+  getStarshipById(id: Int): Starship
+  getVehicleById(id: Int): Vehicle
+}
