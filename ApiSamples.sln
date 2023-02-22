@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Data", "src\Todo.Data\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.RestApi", "src\Todo.RestApi\Todo.RestApi.csproj", "{36714EE8-6D41-4B80-A567-D6ADDB00A6DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.GraphQLApi", "src\Todo.GraphQLApi\Todo.GraphQLApi.csproj", "{9E758950-45A0-45E1-90C9-497B21E00E39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{36714EE8-6D41-4B80-A567-D6ADDB00A6DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36714EE8-6D41-4B80-A567-D6ADDB00A6DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36714EE8-6D41-4B80-A567-D6ADDB00A6DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E758950-45A0-45E1-90C9-497B21E00E39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E758950-45A0-45E1-90C9-497B21E00E39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E758950-45A0-45E1-90C9-497B21E00E39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E758950-45A0-45E1-90C9-497B21E00E39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

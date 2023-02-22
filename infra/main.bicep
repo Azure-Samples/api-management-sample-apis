@@ -47,6 +47,7 @@ param resourceGroupName string = ''
 // Underlying API Service Names
 param starwarsRestServiceName string = ''
 param todoRestServiceName string = ''
+param todoGraphQLServiceName string = ''
 
 // Web applications
 param todoReactRestWebServiceName string = ''
@@ -203,6 +204,29 @@ module todoReactApp './app/todo-react-rest.bicep' = {
 }
 
 // ---------------------------------------------------------------------------------------------
+//  API: Todo GraphQL
+// ---------------------------------------------------------------------------------------------
+module todoGraphQLApiService './app/todo-graphql-api.bicep' = {
+  name: 'todo-graphql-api-service'
+  scope: rg
+  params: {
+    name: !empty(todoGraphQLServiceName) ? todoGraphQLServiceName : 'todo-graphql-${resourceToken}'
+    location: location
+    tags: union(tags, { 'azd-service-name': 'todo-graphql' })
+    applicationInsightsName: monitoring.outputs.applicationInsightsName
+    connectionStrings: {
+      DefaultConnection: {
+        type: 'SQLAzure'
+        value: '${database.outputs.connectionString}; Password=${sqlAdminPassword}'
+      }
+    }
+    appServicePlanId: appServicePlan.outputs.id
+    apiManagementServiceName: apiManagement.outputs.serviceName
+    apiManagementLoggerName: apiManagement.outputs.loggerName
+  }
+}
+
+// ---------------------------------------------------------------------------------------------
 //  OUTPUTS
 //
 //  These are used by Azure Developer CLI to configure deployed applications.
@@ -214,6 +238,7 @@ output AZURE_LOCATION string = location
 output AZURE_TENANT_ID string = tenant().tenantId
 output STARWARS_REST_GATEWAY_URI string = starWarsRestApiService.outputs.gatewayUri
 output TODO_REST_GATEWAY_URI string = todoRestApiService.outputs.gatewayUri
+output TODO_GRAPHQL_GATEWAY_URI string = todoGraphQLApiService.outputs.gatewayUri
 
 // Outputs for the TODO_REACT_REST app
 output TODO_REACT_REST_API_BASE_URL string = todoRestApiService.outputs.gatewayUri

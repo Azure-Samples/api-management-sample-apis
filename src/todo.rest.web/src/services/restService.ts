@@ -1,5 +1,15 @@
 import axios, { AxiosInstance } from 'axios';
 
+axios.interceptors.request.use(request => {
+    console.log('REST (Req):', request);
+    return request;
+});
+
+axios.interceptors.response.use(response => {
+    console.log('REST (Res):', response);
+    return response;
+});
+
 export interface QueryOptions {
     top?: number;
     skip?: number;

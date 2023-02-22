@@ -1,0 +1,15 @@
+<policies>
+    <inbound>
+        <base />
+        <validate-graphql-request max-size="8192" max-depth="3"/>
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound>
+        <base />
+    </outbound>
+    <on-error>
+        <base />
+    </on-error>
+</policies>
