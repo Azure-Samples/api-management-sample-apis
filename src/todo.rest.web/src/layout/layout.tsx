@@ -48,6 +48,8 @@ const Layout: FC = (): ReactElement => {
         }
     }
 
+    console.log('RENDER: AppContext = ', appContext);
+
     return (
         <Stack styles={rootStackStyles}>
             <Stack.Item styles={headerStackStyles}>

@@ -1,15 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
 
-axios.interceptors.request.use(request => {
-    console.log('REST (Req):', request);
-    return request;
-});
-
-axios.interceptors.response.use(response => {
-    console.log('REST (Res):', response);
-    return response;
-});
-
 export interface QueryOptions {
     top?: number;
     skip?: number;
@@ -32,6 +22,15 @@ export abstract class RestService<T extends Entity> {
     public constructor(baseUrl: string, baseRoute: string) {
         this.client = axios.create({
             baseURL: `${baseUrl}${baseRoute}`
+        });
+
+        this.client.interceptors.request.use(request => {
+            console.debug('REST (Request):', request);
+            return request;
+        });
+        this.client.interceptors.response.use(response => {
+            console.debug('REST (Response):', response);
+            return response;
         });
     }
 
