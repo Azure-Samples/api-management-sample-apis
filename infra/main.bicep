@@ -250,6 +250,7 @@ output API_MANAGEMENT_SERVICE_URI string = apiManagement.outputs.uri
 output AZURE_LOCATION string = location
 output AZURE_TENANT_ID string = tenant().tenantId
 output STARWARS_REST_GATEWAY_URI string = starWarsRestApiService.outputs.gatewayUri
+output STARWARS_SYNGQL_GATEWAY_URI string = starWarsSynQLApiService.outputs.gatewayUri
 output TODO_REST_GATEWAY_URI string = todoRestApiService.outputs.gatewayUri
 output TODO_GRAPHQL_GATEWAY_URI string = todoGraphQLApiService.outputs.gatewayUri
 

@@ -4,9 +4,11 @@ This repository is a template for the [Azure Developer CLI](https://aka.ms/azure
 
 - Star Wars API - a read-only API about the Star Wars films
   - REST (includes caching demonstration)
+  - Synthetic GraphQL
 
 - Todo List API - a read/write API for storing todo lists.
   - REST
+  - GraphQL (pass-through)
 
 Others will be added in the future.  For each backend service, the appropriate configuration is added to the Azure API Management instance to handle that API, and logging for the API is handled via Azure App Insights.
 
@@ -60,7 +62,8 @@ This application utilizes the following Azure resources:
 - [**Azure App Services**](https://learn.microsoft.com/azure/app-service/).
 - [**Azure SQL**]https://learn.microsoft.com/azure/azure-sql/).
 - [**Azure Monitor**](https://learn.microsoft.com/azure/azure-monitor/).
-- [**Azure Cache for Redis**](https://learn.microsoft.com/en-us/azure/azure-cache-for-redis/).
+- [**Azure Cache for Redis**](https://learn.microsoft.com/azure/azure-cache-for-redis/).
+- [**Static Web Apps**](https://learn.microsoft.com/azure/static-web-apps/).
 
 > This template provisions resources to an Azure subscription that you will select upon provisioning them. Please refer to the [Pricing calculator for Microsoft Azure](https://azure.microsoft.com/pricing/calculator/) and, if needed, update the included Azure resource definitions found in `infra/main.bicep` to suit your needs.
 

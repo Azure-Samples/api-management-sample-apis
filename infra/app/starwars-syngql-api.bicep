@@ -89,7 +89,7 @@ module graphqlApiDefinition '../core/gateway/synthetic-graphql-api.bicep' = {
     policy: loadTextContent('../../src/ApiManagement/StarWarsSynGQLApi/policy.xml')
     schema: loadTextContent('../../src/ApiManagement/StarWarsSynGQLApi/schema.graphql')
     namedValues: [
-      { name: 'starwarsapi', value: serviceUri }
+      { name: 'starwarsapi', value: '${serviceUri}/api' }
     ]
     resolvers: resolvers
   }
