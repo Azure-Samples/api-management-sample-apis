@@ -27,7 +27,7 @@ The fastest way for you to get this application up and running on Azure is to us
 1. Run the following command to initialize the project, provision Azure resources, and deploy the application code.
 
 ```bash
-azd up --template adrianhall/api-management-sample-apis
+azd up --template api-management-sample-apis
 ```
 
 You will be prompted for the following information:
@@ -60,7 +60,7 @@ This application utilizes the following Azure resources:
 
 - [**Azure API Management**](https://learn.microsoft.com/azure/api-management/).
 - [**Azure App Services**](https://learn.microsoft.com/azure/app-service/).
-- [**Azure SQL**]https://learn.microsoft.com/azure/azure-sql/).
+- [**Azure SQL**](https://learn.microsoft.com/azure/azure-sql/).
 - [**Azure Monitor**](https://learn.microsoft.com/azure/azure-monitor/).
 - [**Azure Cache for Redis**](https://learn.microsoft.com/azure/azure-cache-for-redis/).
 - [**Static Web Apps**](https://learn.microsoft.com/azure/static-web-apps/).
