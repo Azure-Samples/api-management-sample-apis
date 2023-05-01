@@ -59,6 +59,9 @@ param apiManagementServiceName string = ''
 param appInsightsLocationName string = ''
 param staticSitesLocationName string = ''
 
+// SKU Overrides
+param apiManagementSku string = ''
+
 // ---------------------------------------------------------------------------------------------
 //  Variables
 //    These should not need to be touched.
@@ -148,7 +151,7 @@ module apiManagement './core/gateway/api-management.bicep' = {
     location: location
     tags: tags
     applicationInsightsName: monitoring.outputs.applicationInsightsName
-    sku: 'Developer'
+    sku: !empty(apiManagementSku) ? apiManagementSku : 'Developer'
     redisCacheServiceName: redisCache.outputs.cacheName
   }
 }
