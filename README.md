@@ -27,7 +27,9 @@ The fastest way for you to get this application up and running on Azure is to us
 1. Run the following command to initialize the project, provision Azure resources, and deploy the application code.
 
 ```bash
-azd up --template api-management-sample-apis
+1. azd init --template api-management-sample-apis 
+2. azd auth login
+3. azd up template api-management-sample-apis
 ```
 
 You will be prompted for the following information:
