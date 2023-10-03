@@ -29,8 +29,11 @@ param skuCount int = 0
 @description('Azure Application Insights Name')
 param applicationInsightsName string
 
-// @description('Azure Cache for Redis Service Name')
-// param redisCacheServiceName string = ''
+@description('Azure Cache for Redis Service Name')
+param redisCacheServiceName string = ''
+
+var redisConnectionString = !empty(redisCacheServiceName) ? '${redisCache.properties.hostName},password=${redisCache.listKeys().primaryKey},ssl=True,abortConnect=False' : ''
+var redisHostName = !empty(redisCacheServiceName) ? '${redisCache.properties.hostName}' : ''
 
 resource apimService 'Microsoft.ApiManagement/service@2023-03-01-preview' = {
   name: name
@@ -60,15 +63,15 @@ resource apimLogger 'Microsoft.ApiManagement/service/loggers@2023-03-01-preview'
   }
 }
 
-// resource apimCache 'Microsoft.ApiManagement/service/caches@2023-03-01-preview' = if (!empty(redisCacheServiceName)) {
-//   name: 'redis-cache'
-//   parent: apimService
-//   properties: {
-//     connectionString: '${redisCache.properties.hostName},password=${redisCache.listKeys().primaryKey},ssl=True,abortConnect=False'
-//     useFromLocation: 'default'
-//     description: redisCache.properties.hostName
-//   }
-// }
+resource apimCache 'Microsoft.ApiManagement/service/caches@2023-03-01-preview' = if (!empty(redisCacheServiceName)) {
+  name: 'redis-cache'
+  parent: apimService
+  properties: {
+    connectionString: redisConnectionString
+    useFromLocation: 'default'
+    description: redisHostName
+  }
+}
 
 resource apimNamedValue 'Microsoft.ApiManagement/service/namedValues@2023-03-01-preview' = [for nv in namedValues: {
   name: nv.key
@@ -84,9 +87,9 @@ resource applicationInsights 'Microsoft.Insights/components@2020-02-02' existing
   name: applicationInsightsName
 }
 
-// resource redisCache 'Microsoft.Cache/redis@2022-06-01' existing = if (!empty(redisCacheServiceName)) {
-//   name: redisCacheServiceName
-// }
+resource redisCache 'Microsoft.Cache/redis@2022-06-01' existing = if (!empty(redisCacheServiceName)) {
+  name: redisCacheServiceName
+}
 
 output serviceName string = apimService.name
 output loggerName string = !empty(applicationInsightsName) ? apimLogger.name : ''
