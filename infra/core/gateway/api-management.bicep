@@ -19,8 +19,8 @@ param publisherEmail string = 'noreply@microsoft.com'
 param publisherName string = 'n/a'
 
 @description('The pricing tier of this API Management service')
-@allowed([ 'Consumption', 'Developer', 'Standard', 'Premium'])
-param sku string = 'Consumption'
+@allowed([ 'Consumption', 'Developer', 'Standard', 'Premium', 'BasicV2', 'StandardV2'])
+param sku string = 'BasicV2'
 
 @description('The instance size of this API Management service.')
 @allowed([ 0, 1, 2 ])
@@ -32,13 +32,17 @@ param applicationInsightsName string
 @description('Azure Cache for Redis Service Name')
 param redisCacheServiceName string = ''
 
-resource apimService 'Microsoft.ApiManagement/service@2022-08-01' = {
+var redisConnectionString = !empty(redisCacheServiceName) ? '${redisCache.properties.hostName},password=${redisCache.listKeys().primaryKey},ssl=True,abortConnect=False' : ''
+var redisHostName = !empty(redisCacheServiceName) ? '${redisCache.properties.hostName}' : ''
+
+resource apimService 'Microsoft.ApiManagement/service@2023-03-01-preview' = {
   name: name
   location: location
   tags: tags
   sku: {
     name: sku
-    capacity: (sku == 'Consumption') ? 0 : ((sku == 'Developer') ? 1 : skuCount)
+    // Consumptions requires 0, Developer 1, everything else > 0
+    capacity: (sku == 'Consumption') ? 0 : ((sku == 'Developer') ? 1 : (skuCount == 0) ? 1 : skuCount)
   }
   properties: {
     publisherEmail: publisherEmail
@@ -46,7 +50,7 @@ resource apimService 'Microsoft.ApiManagement/service@2022-08-01' = {
   }
 }
 
-resource apimLogger 'Microsoft.ApiManagement/service/loggers@2022-08-01' = if (!empty(applicationInsightsName)) {
+resource apimLogger 'Microsoft.ApiManagement/service/loggers@2023-03-01-preview' = if (!empty(applicationInsightsName)) {
   name: 'app-insights-logger'
   parent: apimService
   properties: {
@@ -60,17 +64,17 @@ resource apimLogger 'Microsoft.ApiManagement/service/loggers@2022-08-01' = if (!
   }
 }
 
-resource apimCache 'Microsoft.ApiManagement/service/caches@2022-08-01' = if (!empty(redisCacheServiceName)) {
+resource apimCache 'Microsoft.ApiManagement/service/caches@2023-03-01-preview' = if (!empty(redisCacheServiceName)) {
   name: 'redis-cache'
   parent: apimService
   properties: {
-    connectionString: '${redisCache.properties.hostName},password=${redisCache.listKeys().primaryKey},ssl=True,abortConnect=False'
+    connectionString: redisConnectionString
     useFromLocation: 'default'
-    description: redisCache.properties.hostName
+    description: redisHostName
   }
 }
 
-resource apimNamedValue 'Microsoft.ApiManagement/service/namedValues@2022-08-01' = [for nv in namedValues: {
+resource apimNamedValue 'Microsoft.ApiManagement/service/namedValues@2023-03-01-preview' = [for nv in namedValues: {
   name: nv.key
   parent: apimService
   properties: {
