@@ -20,7 +20,7 @@ param publisherName string = 'n/a'
 
 @description('The pricing tier of this API Management service')
 @allowed([ 'Consumption', 'Developer', 'Standard', 'Premium', 'BasicV2', 'StandardV2'])
-param sku string = 'StandardV2'
+param sku string = 'BasicV2'
 
 @description('The instance size of this API Management service.')
 @allowed([ 0, 1, 2 ])
@@ -41,7 +41,8 @@ resource apimService 'Microsoft.ApiManagement/service@2023-03-01-preview' = {
   tags: tags
   sku: {
     name: sku
-    capacity: (sku == 'Consumption') ? 0 : ((skuCount == 0) ? 1 : skuCount)
+    // Consumptions requires 0, Developer 1, everything else > 0
+    capacity: (sku == 'Consumption') ? 0 : ((sku == 'Developer') ? 1 : (skuCount == 0) ? 1 : skuCount)
   }
   properties: {
     publisherEmail: publisherEmail
