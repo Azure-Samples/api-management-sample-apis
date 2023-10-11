@@ -152,7 +152,7 @@ module apiManagement './core/gateway/api-management.bicep' = {
     location: location
     tags: tags
     applicationInsightsName: monitoring.outputs.applicationInsightsName
-    sku: !empty(apiManagementSku) ? apiManagementSku : 'StandardV2'
+    sku: !empty(apiManagementSku) ? apiManagementSku : 'BasicV2'
     redisCacheServiceName: redisOutputName
   }
 }
