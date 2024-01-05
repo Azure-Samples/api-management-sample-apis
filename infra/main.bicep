@@ -125,10 +125,11 @@ module appServicePlan './core/host/appserviceplan.bicep' = {
   }
 }
 
-// ---------------------------------------------------------------------------------------------
-//  Redis Cache
-// ---------------------------------------------------------------------------------------------
-module redisCache './core/cache/redis.bicep' = {
+// // ---------------------------------------------------------------------------------------------
+// //  Redis Cache
+// // ---------------------------------------------------------------------------------------------
+var redisOutputName = !empty(redisCacheServiceName) ? redisCache.outputs.cacheName : ''
+module redisCache './core/cache/redis.bicep' = if (!empty(redisCacheServiceName)) {
   name: 'redis-cache'
   scope: rg
   params: {
@@ -151,8 +152,8 @@ module apiManagement './core/gateway/api-management.bicep' = {
     location: location
     tags: tags
     applicationInsightsName: monitoring.outputs.applicationInsightsName
-    sku: !empty(apiManagementSku) ? apiManagementSku : 'Developer'
-    redisCacheServiceName: redisCache.outputs.cacheName
+    sku: !empty(apiManagementSku) ? apiManagementSku : 'BasicV2'
+    redisCacheServiceName: redisOutputName
   }
 }
 
