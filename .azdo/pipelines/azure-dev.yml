@@ -5,7 +5,8 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-
+steps:
+   - name: Checkout
    - name: Checkout
      uses: actions/checkout@v3
 
